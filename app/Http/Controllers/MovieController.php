@@ -23,6 +23,19 @@ class MovieController extends Controller
             return $movie['Category'] === $slug;
         });
 
+        if ($filteredMovies->isEmpty()){
+            abort(404,"invalid category:$slug");
+        }
+
         return view("movies.category", compact('filteredMovies'));
+    }
+
+    public function movie(string $id)
+    {
+        $movies = Movie::getMovies();
+
+        $selectedMovie=$movies[$id];
+
+        return view("movies.movie", compact('selectedMovie'));
     }
 }

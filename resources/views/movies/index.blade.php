@@ -11,8 +11,8 @@
 <br>
 <h2>Movies:</h2>
     <ul>
-    @foreach ($movies as $movie)
-    <li> {{$movie["Title"]}} ({{$movie["Year"]}})</li>
+    @foreach ($movies as $id => $movie)
+    <li> <a href="{{route("movies.movie", $id)}}">{{$movie["Title"]}}</a> ({{$movie["Year"]}})</li>
     @endforeach
     </ul>
 @endsection
